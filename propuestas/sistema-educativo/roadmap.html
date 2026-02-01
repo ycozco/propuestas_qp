@@ -227,13 +227,35 @@
                             <span class="phase-badge badge-planning">Fase 0: Inception</span>
                             <h2 class="timeline-title">Definición & Diseño</h2>
                             <span class="timeline-date">Semanas 1-2</span>
-                            <ul class="timeline-tasks">
-                                <li>Reunión de Kickoff con directivos.</li>
-                                <li>Levantamiento de requerimientos detallados (SRS).</li>
-                                <li>Diseño de Mockups y Prototipos UI/UX.</li>
-                                <li>Aprobación de diagramas de Base de Datos.</li>
-                                <li>Configuración de entorno (Servidor, Repo, CI/CD).</li>
-                            </ul>
+
+                            <div class="roadmap-detail">
+                                <p><strong>Idea:</strong> Establecer los cimientos sólidos del proyecto, definiendo la
+                                    arquitectura tecnológica y visual antes de escribir código complejo.</p>
+
+                                <div class="detail-block">
+                                    <h4>🎯 Alcance</h4>
+                                    <p>Documentación técnica (SRS), Prototipos UI/UX de alta fidelidad y Configuración
+                                        de entornos Dev/Prod.</p>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>⚙️ Requerimientos Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li>Prototipo navegable de Portal Público y Panel Admin.</li>
+                                        <li>Definición de Diccionario de Datos (DER).</li>
+                                        <li>Configuración de Repositorio y CI/CD Pipeline.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>🛡️ Requerimientos No Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li>Estándares de Código (PSR-12 para PHP).</li>
+                                        <li>Diseño Responsivo (Mobile First).</li>
+                                        <li>Plan de Seguridad de Datos.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -241,47 +263,117 @@
                     <div class="timeline-item right" data-aos="fade-left">
                         <div class="timeline-content">
                             <span class="phase-badge badge-core">Fase 1: Core System</span>
-                            <h2 class="timeline-title">Desarrollo del Núcleo</h2>
+                            <h2 class="timeline-title">Núcleo Administrativo</h2>
                             <span class="timeline-date">Semanas 3-5</span>
-                            <ul class="timeline-tasks">
-                                <li>Implementación de Autenticación y RBAC (Roles).</li>
-                                <li>Desarrollo de Módulo de Sedes (Multi-Tenant).</li>
-                                <li>Portal Público Institucional (CMS Básico).</li>
-                                <li>Sistema de Noticias y Comunicados.</li>
-                                <li>Integración inicial de Base de Datos.</li>
-                            </ul>
+
+                            <div class="roadmap-detail">
+                                <p><strong>Idea:</strong> Implementar la estructura base que gestionará la seguridad,
+                                    usuarios y la separación lógica de sedes.</p>
+
+                                <div class="detail-block">
+                                    <h4>🎯 Alcance</h4>
+                                    <p>Sistema de gestión de usuarios, roles, sedes y portal web público (CMS).</p>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>⚙️ Requerimientos Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li><strong>Auth:</strong> Login, Logout, Recuperar Contraseña.</li>
+                                        <li><strong>RBAC:</strong> Gestión de Roles (SuperAdmin, AdminSede, Docente).
+                                        </li>
+                                        <li><strong>Multi-Sede:</strong> CRUD de Sedes y filtrado lógico.</li>
+                                        <li><strong>Portal:</strong> Gestión de Noticias, Banners y Páginas.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>🛡️ Requerimientos No Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li>Aislamiento de datos por `site_id` obligatorio.</li>
+                                        <li>Contraseñas hasheadas (Bcrypt/Argon2).</li>
+                                        <li>Auditoría de accesos (Login Logs).</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Fase 2 -->
                     <div class="timeline-item left" data-aos="fade-right">
                         <div class="timeline-content">
-                            <span class="phase-badge badge-academic">Fase 2: Académico & Pagos</span>
-                            <h2 class="timeline-title">Lógica de Negocio</h2>
+                            <span class="phase-badge badge-academic">Fase 2: Lógica de Negocio</span>
+                            <h2 class="timeline-title">Académico & Financiero</h2>
                             <span class="timeline-date">Semanas 6-8</span>
-                            <ul class="timeline-tasks">
-                                <li class="pending">Módulo de Olimpiadas (Exámenes y Preguntas).</li>
-                                <li class="pending">Flujo de Inscripción y Pagos Yape.</li>
-                                <li class="pending">Validación de Vouchers y Caja.</li>
-                                <li class="pending">Integración WhatsApp API para alertas.</li>
-                                <li class="pending">Registro de Notas y Bimestres.</li>
-                            </ul>
+
+                            <div class="roadmap-detail">
+                                <p><strong>Idea:</strong> El corazón operativo que maneja las inscripciones, pagos y
+                                    evaluaciones académicas.</p>
+
+                                <div class="detail-block">
+                                    <h4>🎯 Alcance</h4>
+                                    <p>Módulo de Olimpiadas completo, Flujo de inscripción con Yape y Registro de Notas.
+                                    </p>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>⚙️ Requerimientos Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li><strong>Olimpiadas:</strong> Crear Examen, Importar Preguntas, Definir
+                                            Temarios.</li>
+                                        <li><strong>Pagos:</strong> Subir Voucher, Validar Pago, Notificar por WhatsApp.
+                                        </li>
+                                        <li><strong>Académico:</strong> Matrícula de Alumnos, Registro de Notas por
+                                            Docente.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>🛡️ Requerimientos No Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li>Consistencia Transaccional (ACID) en pagos.</li>
+                                        <li>Tiempos de respuesta para validación < 1s.</li>
+                                        <li>Escalabilidad para concurrencia en exámenes.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Fase 3 -->
                     <div class="timeline-item right" data-aos="fade-left">
                         <div class="timeline-content">
-                            <span class="phase-badge badge-deploy">Fase 3: QA & Go-Live</span>
-                            <h2 class="timeline-title">Pruebas y Lanzamiento</h2>
+                            <span class="phase-badge badge-deploy">Fase 3: QA & Lanzamiento</span>
+                            <h2 class="timeline-title">Estabilización</h2>
                             <span class="timeline-date">Semanas 9-10</span>
-                            <ul class="timeline-tasks">
-                                <li class="pending">Pruebas de Carga y Estrés.</li>
-                                <li class="pending">Capacitación a Personal Administrativo.</li>
-                                <li class="pending">Migración de Datos Históricos (si aplica).</li>
-                                <li class="pending">Manuales de Usuario y Documentación.</li>
-                                <li class="pending"><strong>Pase a Producción.</strong></li>
-                            </ul>
+
+                            <div class="roadmap-detail">
+                                <p><strong>Idea:</strong> Asegurar la calidad del software y preparar el entorno para
+                                    operación real masiva.</p>
+
+                                <div class="detail-block">
+                                    <h4>🎯 Alcance</h4>
+                                    <p>Pruebas intensivas, reportes finales, capacitación y despliegue a producción.</p>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>⚙️ Requerimientos Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li><strong>Reportes:</strong> Generación de PDFs (Certificados, Boletas) y
+                                            Excel Masivo.</li>
+                                        <li><strong>Ranking:</strong> Cálculo automático de puestos.</li>
+                                        <li><strong>Dashboards:</strong> Métricas finales para directivos.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="detail-block">
+                                    <h4>🛡️ Requerimientos No Funcionales</h4>
+                                    <ul class="detail-list">
+                                        <li>Carga de página pública < 2 segundos (LCP).</li>
+                                        <li>Copias de Seguridad Automáticas (Diarias).</li>
+                                        <li>Certificado SSL/TLS Implementado.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
