@@ -891,3 +891,27 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* Navbar Icon Fix & Separators */
+.nav-link svg,
+.nav-back svg {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    flex-shrink: 0;
+}
+
+.nav-separator {
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+    font-size: 0.9rem;
+    margin: 0 2px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .nav-separator {
+        display: none;
+    }
+}
