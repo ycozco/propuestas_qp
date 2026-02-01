@@ -218,18 +218,22 @@ body {
 
 .nav {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .nav-link {
     color: var(--color-text-secondary);
     text-decoration: none;
     font-weight: 600;
-    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
 .nav-link::after {
@@ -725,8 +729,48 @@ body {
 }
 
 @media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+    }
+
     .nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .nav-link span {
         display: none;
+    }
+
+    .nav-back {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+
+    .nav-back span {
+        display: inline;
+    }
+
+    .logo-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .logo-title {
+        font-size: 1.1rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.7rem;
     }
 
     .hero-title {
@@ -751,17 +795,19 @@ body {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-sm) var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
     background: rgba(30, 64, 175, 0.1);
     border: 1.5px solid rgba(30, 64, 175, 0.3);
-    border-radius: 12px;
+    border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
 }
 
 .nav-back svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .nav-back:hover {
@@ -776,4 +822,72 @@ body {
 
 .nav-back::after {
     display: none;
+}
+
+.nav-link svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* Mobile Menu Improvements */
+@media (max-width: 480px) {
+    .header {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .logo {
+        gap: var(--spacing-xs);
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .logo-title {
+        font-size: 1rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.65rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-xs);
+    }
+
+    .nav-link,
+    .nav-back {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .propuestas-grid {
+        gap: var(--spacing-lg);
+    }
+
+    .propuesta-card {
+        padding: var(--spacing-lg);
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
 }
