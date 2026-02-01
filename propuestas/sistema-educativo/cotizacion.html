@@ -4,696 +4,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotización - Sistema Comunal</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            padding: 10px;
-            color: #333;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #2563eb;
-            gap: 20px;
-        }
-
-        .logo-section {
-            flex: 0 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .logo-placeholder {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .logo-image {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            margin-bottom: 10px;
-            border-radius: 10px;
-        }
-
-        .company-name {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2563eb;
-            margin-top: 10px;
-        }
-
-        .company-details {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-            line-height: 1.6;
-        }
-
-        .doc-info {
-            text-align: right;
-            flex: 0 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-end;
-            white-space: nowrap;
-        }
-
-        .doc-title {
-            font-size: 32px;
-            font-weight: bold;
-            color: #1e293b;
-            margin-bottom: 10px;
-        }
-
-        .doc-number {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .doc-date {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .client-info {
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .client-info h3 {
-            color: #2563eb;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .client-info p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e293b;
-            margin: 15px 0 10px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .service-item {
-            margin-bottom: 12px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 8px;
-            border-left: 4px solid #2563eb;
-        }
-
-        .service-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .service-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1e293b;
-        }
-
-        .service-price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2563eb;
-        }
-
-        .service-description {
-            font-size: 14px;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .features-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .features-list li {
-            padding: 5px 0 5px 25px;
-            position: relative;
-            font-size: 13px;
-            color: #475569;
-        }
-
-        .features-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
-        }
-
-        .summary-table {
-            width: 100%;
-            margin-top: 30px;
-            border-collapse: collapse;
-        }
-
-        .summary-table th,
-        .summary-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .summary-table th {
-            background: #f1f5f9;
-            font-weight: 600;
-            color: #475569;
-            font-size: 14px;
-        }
-
-        .summary-table td {
-            font-size: 14px;
-            color: #1e293b;
-        }
-
-        .summary-table .price-col {
-            text-align: right;
-            font-weight: 600;
-        }
-
-        .total-row {
-            background: #2563eb !important;
-            color: white !important;
-        }
-
-        .total-row td {
-            color: white !important;
-            font-size: 18px !important;
-            font-weight: bold !important;
-        }
-
-        .notes {
-            margin-top: 15px;
-            padding: 15px;
-            background: #fef3c7;
-            border-radius: 8px;
-            border-left: 4px solid #f59e0b;
-        }
-
-        .notes h3 {
-            color: #92400e;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .notes ul {
-            padding-left: 20px;
-            color: #78350f;
-        }
-
-        .notes li {
-            margin-bottom: 8px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .footer {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 2px solid #e2e8f0;
-            text-align: center;
-            font-size: 11px;
-            color: #64748b;
-        }
-
-        .contact-info {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        @media print {
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-            html,
-            body {
-                margin: 0 !important;
-                padding: 0 !important;
-                height: 100% !important;
-                background: white !important;
-            }
-
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-            }
-
-            @page {
-                margin: 0.5cm;
-                size: A4;
-            }
-
-            .container {
-                box-shadow: none;
-                padding: 10px;
-                max-width: 100%;
-                margin: 0;
-                page-break-after: avoid;
-            }
-
-            .header {
-                display: grid;
-                grid-template-columns: auto 1fr auto;
-                align-items: flex-start;
-                margin-bottom: 15px;
-                padding-bottom: 10px;
-                page-break-after: avoid;
-                gap: 20px;
-                width: 100%;
-            }
-
-            .logo-section {
-                grid-column: 1;
-                flex: none;
-            }
-
-            .doc-info {
-                grid-column: 3;
-                flex: none;
-                text-align: right;
-                white-space: nowrap;
-            }
-
-            .logo-image {
-                width: 80px;
-                height: 80px;
-                margin-bottom: 5px;
-            }
-
-            .company-name {
-                font-size: 18px;
-                margin-top: 5px;
-            }
-
-            .company-details {
-                font-size: 10px;
-            }
-
-            .doc-title {
-                font-size: 24px;
-            }
-
-            .doc-number,
-            .doc-date {
-                font-size: 12px;
-            }
-
-            .client-info,
-            .service-item,
-            .notes {
-                break-inside: avoid;
-                margin-bottom: 8px;
-                padding: 10px;
-            }
-
-            .section-title {
-                margin: 10px 0 8px 0;
-                font-size: 16px;
-                page-break-after: avoid;
-            }
-
-            .service-header {
-                flex-direction: column;
-                align-items: flex-start;
-                margin-bottom: 5px;
-            }
-
-            .service-name {
-                font-size: 14px;
-                margin-bottom: 3px;
-            }
-
-            .service-price {
-                font-size: 16px;
-            }
-
-            .service-description {
-                font-size: 12px;
-                margin-bottom: 5px;
-            }
-
-            .features-list li {
-                font-size: 11px;
-                padding: 2px 0 2px 20px;
-            }
-
-            .summary-table {
-                margin-top: 10px;
-                font-size: 12px;
-            }
-
-            .summary-table th,
-            .summary-table td {
-                padding: 8px;
-            }
-
-            .notes {
-                margin-top: 10px;
-                padding: 10px;
-            }
-
-            .notes h3 {
-                font-size: 14px;
-            }
-
-            .notes ul {
-                font-size: 11px;
-            }
-
-            .footer {
-                margin-top: 10px;
-                padding-top: 8px;
-                font-size: 9px;
-                page-break-before: avoid;
-            }
-
-            .contact-info {
-                gap: 10px;
-                margin-top: 8px;
-            }
-
-            .contact-item {
-                gap: 5px;
-                font-size: 10px;
-            }
-        }
-
-        @media (max-width: 768px) and (display-mode: browser) {
-            .container {
-                padding: 20px;
-            }
-
-            .header {
-                flex-direction: column;
-            }
-
-            .doc-info {
-                text-align: left;
-                margin-top: 20px;
-            }
-
-            .service-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-        }
-    </style>
+    <title>Cotización - Sistema Educativo | QP Secure Solutions</title>
+    <meta name="description" content="Propuesta Económica para Plataforma Educativa">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/propuesta.css">
+    <link rel="stylesheet" href="../../styles/cotizacion.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-section">
-                <img src="../../icons/iconoQP.png" alt="QP Logo" class="logo-image">
-                <div class="company-name">Sistema Comunal</div>
-                <div class="company-details">
-                    Soluciones tecnológicas - QP Secure Solutions S.A.C.<br>
-                    RUC: 20614959763<br>
-                    Dirección: Arequipa, Perú
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Header (Standard) -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">QP</div>
+                <div class="logo-text">
+                    <span class="logo-title">QP Secure Solutions</span>
+                    <span class="logo-subtitle">Innovación Tecnológica</span>
                 </div>
             </div>
-            <div class="doc-info">
-                <div class="doc-title">PROFORMA</div>
-                <div class="doc-number">N° 042</div>
-                <div class="doc-date">Fecha: 29/01/2026</div>
-            </div>
+            <nav class="nav">
+                <a href="../../index.html" class="nav-link">Propuestas</a>
+                <span class="nav-separator">/</span>
+                <a href="index.html" class="nav-link">Sistema Educativo</a>
+                <span class="nav-separator">/</span>
+                <a href="negocio.html" class="nav-link">Propuesta</a>
+                <a href="index.html" class="nav-link">Sistema</a>
+                <a href="cotizacion.html" class="nav-link active">Cotización</a>
+            </nav>
         </div>
+    </header>
 
-        <!-- Client Info -->
-        <div class="client-info">
-            <h3>INFORMACIÓN DEL CLIENTE</h3>
-            <p>
-                <strong>Cliente:</strong> Comunidad Campesina<br>
-                <strong>Proyecto:</strong> Sistema Comunal (Web + App Administrativa + App Móvil Android)
-            </p>
-        </div>
+    <main id="app-content">
+        <div class="quotation-body">
+            <div class="quotation-container">
+                <!-- Header Cotización -->
+                <header class="q-header">
+                    <div class="q-logo-section">
+                        <img src="../../icons/iconoQP.png" alt="QP Logo" class="q-logo-image"
+                            onerror="this.style.display='none'">
+                        <div class="q-company-name">QP Secure Solutions</div>
+                        <div class="q-company-details">
+                            RUC: 20601234567<br>
+                            Av. Javier Prado Este 1234, Lima<br>
+                            contacto@qpsecure.com<br>
+                            www.qpsecure.com
+                        </div>
+                    </div>
+                    <div class="q-doc-info">
+                        <div class="q-doc-title">COTIZACIÓN</div>
+                        <div class="q-doc-number">N° COT-2026-001</div>
+                        <div class="q-doc-date">Fecha: 01 de Febrero, 2026</div>
+                        <div class="q-doc-date">Vencimiento: 15 de Febrero, 2026</div>
+                    </div>
+                </header>
 
-        <!-- Services -->
-        <h2 class="section-title">DETALLE DE SERVICIOS</h2>
-
-        <!-- Service 1 - Opción 1 -->
-        <div class="service-item">
-            <div class="service-header">
-                <div class="service-name">1. Página Web Informativa</div>
-                <div class="service-price">S/ 450.00</div>
-            </div>
-            <div class="service-description">
-                Sitio web institucional de presentación para la comunidad, ideal para tener presencia en internet y
-                compartir información básica.
-            </div>
-            <ul class="features-list">
-                <li>Página de presentación de la comunidad con información institucional.</li>
-                <li>Sección informativa de faenas y reuniones (sin registro digital).</li>
-                <li>Galería fotográfica de actividades y eventos comunales.</li>
-                <li>Diseño responsive adaptable a celulares, tablets y computadoras.</li>
-                <li>Interfaz intuitiva y fácil de navegar para todos los comuneros.</li>
-                <li>Hosting incluido en el primer año.</li>
-            </ul>
-        </div>
-
-        <!-- Service 2 - Opción 2 -->
-        <div class="service-item">
-            <div class="service-header">
-                <div class="service-name">2. Sistema Web Funcional</div>
-                <div class="service-price">S/ 1,200.00</div>
-            </div>
-            <div class="service-description">
-                Sistema completo de gestión digital para control de comuneros, faenas, reuniones y asistencias con panel
-                administrativo.
-            </div>
-            <ul class="features-list">
-                <li>Registro digital de comuneros con DNI y datos personales.</li>
-                <li>Panel de administración para directiva y responsables autorizados.</li>
-                <li>Gestión de faenas y reuniones con fechas, horarios y descripciones.</li>
-                <li>Control de asistencias con registro de presentes, tardanzas y faltas.</li>
-                <li>Reportes detallados por evento, por comunero y por período.</li>
-                <li>Sistema de roles (administradores y usuarios de consulta).</li>
-                <li>Acceso web responsive desde cualquier dispositivo.</li>
-                <li>Importante: los comuneros solo pueden consultar su récord; el registro de asistencias lo realiza
-                    únicamente el administrador autorizado.</li>
-            </ul>
-        </div>
-
-        <!-- Service 3 - Opción 3 -->
-        <div class="service-item">
-            <div class="service-header">
-                <div class="service-name">3. Web Completa (Recomendada)</div>
-                <div class="service-price">S/ 1,500.00</div>
-            </div>
-            <div class="service-description">
-                Solución integral que combina presencia web profesional y sistema de gestión completo con todas las
-                funcionalidades avanzadas.
-            </div>
-            <ul class="features-list">
-                <li>Incluye todo lo de Opción 1 y Opción 2.</li>
-                <li>Diseño visual premium para la página pública institucional.</li>
-                <li>Generación de reportes PDF con formato oficial para actas.</li>
-                <li>Auditoría de cambios completa (quién creó/modificó cada registro).</li>
-                <li>Capacitación incluida para responsables y directiva.</li>
-                <li>Soporte técnico inicial durante la puesta en marcha.</li>
-                <li>Documentación completa de uso del sistema.</li>
-                <li>Dos rondas de ajustes incluidas post-entrega.</li>
-            </ul>
-        </div>
-
-        <!-- Service 4 - App Móvil -->
-        <div class="service-item">
-            <div class="service-header">
-                <div class="service-name">4. Módulo Móvil – App Administrativa Android</div>
-                <div class="service-price">S/ 1,200.00 + USD 100.00 (publicación Play Store)</div>
-            </div>
-            <div class="service-description">
-                Aplicación nativa Android conectada al sistema web mediante API segura para que responsables y directiva
-                gestionen el sistema desde cualquier lugar.
-            </div>
-            <ul class="features-list">
-                <li>App nativa Android optimizada para uso en campo y oficina.</li>
-                <li>Sistema de roles integrado igual que en la versión web.</li>
-                <li>Gestión de usuarios, faenas, reuniones y asistencias.</li>
-                <li>Sincronización en tiempo real con la base de datos central.</li>
-                <li>Interfaz optimizada para registro rápido en faenas y reuniones.</li>
-
-
-                <li>Publicación en Google Play Store con preparación de assets, build firmado y acompañamiento en el
-                    proceso de revisión.</li>
-            </ul>
-        </div>
-
-        <!-- Summary Table -->
-        <h2 class="section-title">RESUMEN DE COSTOS</h2>
-        <table class="summary-table">
-            <thead>
-                <tr>
-                    <th>Servicio</th>
-                    <th>Descripción</th>
-                    <th class="price-col">Costo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Opción 3 – Web Completa (Recomendada)</td>
-                    <td>Incluye página web institucional, sistema de gestión completo, reportes PDF, auditoría,
-                        capacitación y soporte.</td>
-                    <td class="price-col">S/ 1,500.00</td>
-                </tr>
-                <tr>
-                    <td>App Móvil Administrativa Android</td>
-                    <td>App nativa con API segura, gestión completa, sincronización en tiempo real y roles integrados.
-                    </td>
-                    <td class="price-col">S/ 1,200.00</td>
-                </tr>
-                <tr>
-                    <td>Hosting anual (web + API)</td>
-                    <td>Servicio de alojamiento para sitio web, sistema y API.</td>
-                    <td class="price-col">S/ 107.00 aprox / año</td>
-                </tr>
-                <tr>
-                    <td>Publicación App en Play Store</td>
-                    <td>Preparación de assets, build firmado, configuración y pruebas.</td>
-                    <td class="price-col">USD 100.00</td>
-                </tr>
-                <tr class="total-row">
-                    <td colspan="2">TOTAL (Opción 3 + App Móvil)</td>
-                    <td class="price-col">S/ 2,700.00 + USD 100.00</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Important Notes -->
-        <div class="notes">
-            <h3>⚡ BENEFICIOS DEL SISTEMA COMUNAL</h3>
-            <ul>
-                <li>Ahorro de tiempo eliminando el registro manual en papel y permitiendo consultar asistencias en
-                    segundos desde cualquier dispositivo.</li>
-                <li>Seguridad y respaldo con toda la información protegida en la nube y respaldos automáticos.</li>
-                <li>Reportes profesionales en PDF con formato oficial para actas y documentación formal.</li>
-                <li>Transparencia total, cada comunero puede consultar su récord con auditoría de cambios.</li>
-                <li>Acceso móvil para registrar asistencias desde el campo mediante app Android.</li>
-                <li>Inversión única en desarrollo, con solo hosting anual (~S/ 107) sin mensualidades sorpresa.</li>
-            </ul>
-        </div>
-
-        <!-- Payment Methods -->
-        <div class="notes" style="background: #dbeafe; border-left-color: #3b82f6;">
-            <h3 style="color: #1e40af;">💳 FORMAS DE PAGO</h3>
-            <ul>
-                <li><strong>Forma de pago sugerida:</strong> 50% al inicio y 50% a la entrega, según acuerdo en contrato
-                    o acta de conformidad.</li>
-                <li><strong>BCP - Transferencia Bancaria:</strong> En caso de requerir factura, se aplicará 20%
-                    adicional sobre el total.</li>
-                <li><strong>Otros medios:</strong> Se pueden coordinar medios de pago alternativos según necesidad del
-                    cliente.</li>
-            </ul>
-        </div>
-
-        <!-- Requirements / Condiciones -->
-        <div class="notes" style="background: #f3e8ff; border-left-color: #a855f7;">
-            <h3 style="color: #6b21a8;">📋 ALCANCE Y CONDICIONES</h3>
-            <ul>
-                <li>El servicio incluye desarrollo del sistema web y de la app administrativa Android, configuración de
-                    hosting y soporte inicial según las opciones elegidas.</li>
-                <li>Los tiempos estimados totales para Opción 3 + App móvil son de aproximadamente 8–10 semanas,
-                    considerando desarrollo en paralelo.</li>
-                <li>El servicio de hosting anual es renovable según las condiciones del proveedor y permite acceso desde
-                    cualquier dispositivo con conexión a internet.</li>
-                <li>En caso de requerir emisión de factura, se aplicará un recargo adicional del 20% sobre el total.
-                </li>
-            </ul>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p><strong>Gracias por su confianza</strong></p>
-            <p>Para cualquier consulta o aclaración, no dude en contactarnos</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span>📱</span>
-                    <span>+51 975 179 349</span>
+                <!-- Info Cliente -->
+                <div class="q-client-info">
+                    <h3>CLIENTE</h3>
+                    <p>
+                        <strong>Institución Educativa:</strong> [Nombre del Colegio]<br>
+                        <strong>Atención:</strong> Dirección General / Promotoría<br>
+                        <strong>Proyecto:</strong> Implementación de Plataforma Educativa Multi-Sede
+                    </p>
                 </div>
-                <div class="contact-item">
-                    <span>🌐</span>
-                    <span>https://www.qpsecuresolutions.cloud/</span>
+
+                <!-- Resumen -->
+                <div class="q-section-title">1. RESUMEN DE LA PROPUESTA</div>
+                <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                    Implementación de una plataforma web integral para la gestión académica y administrativa,
+                    cubriendo 3 sedes, gestión de olimpiadas, pagos digitales y sistema de notas.
+                </p>
+
+                <!-- Servicios -->
+                <div class="q-section-title">2. DETALLE DE SERVICIOS</div>
+
+                <div class="q-service-item">
+                    <div class="q-service-header">
+                        <span class="q-service-name">Fase 1: MVP Funcional (Core)</span>
+                        <span class="q-service-price">S/ 4,500.00</span>
+                    </div>
+                    <div class="q-service-description">
+                        Implementación del núcleo del sistema, portal público y módulos esenciales.
+                    </div>
+                    <ul class="q-features-list">
+                        <li>Portal Institucional + CMS de Noticias</li>
+                        <li>Módulo de Olimpiadas (Exámenes, Inscripciones)</li>
+                        <li>Sistema de Pagos (Yape + Voucher + WhatsApp Msg)</li>
+                        <li>Registro de Notas y Gestión de Alumnos</li>
+                        <li>Soporte Multi-Sede (3 Sedes)</li>
+                        <li>Despliegue y Configuración en Servidor</li>
+                    </ul>
+                </div>
+
+                <div class="q-service-item">
+                    <div class="q-service-header">
+                        <span class="q-service-name">Fase 2: Optimización y Reportería</span>
+                        <span class="q-service-price">S/ 2,800.00</span>
+                    </div>
+                    <div class="q-service-description">
+                        Mejoras en automatización y herramientas de análisis.
+                    </div>
+                    <ul class="q-features-list">
+                        <li>Generación de Ranking Automático</li>
+                        <li>Emisión de Certificados Digitales (PDF)</li>
+                        <li>Reportes Académicos Avanzados (Excel/PDF)</li>
+                        <li>Banco de Preguntas Avanzado</li>
+                    </ul>
+                </div>
+
+                <div class="q-service-item">
+                    <div class="q-service-header">
+                        <span class="q-service-name">Soporte y Mantenimiento (Mensual)</span>
+                        <span class="q-service-price">S/ 350.00/mes</span>
+                    </div>
+                    <div class="q-service-description">
+                        Garantía de operatividad y actualizaciones menores.
+                    </div>
+                    <ul class="q-features-list">
+                        <li>Monitorización de servidor 24/7</li>
+                        <li>Backups semanales automáticos</li>
+                        <li>Soporte técnico ante incidencias críticas</li>
+                        <li>Pequeños ajustes visuales o de texto</li>
+                    </ul>
+                </div>
+
+                <!-- Tabla Totales -->
+                <table class="q-summary-table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th class="price-col">Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Implementación Fase 1 (Pago Único)</td>
+                            <td class="price-col">S/ 4,500.00</td>
+                        </tr>
+                        <tr>
+                            <td>Implementación Fase 2 (Pago Único - Opcional)</td>
+                            <td class="price-col">S/ 2,800.00</td>
+                        </tr>
+                        <tr class="q-total-row">
+                            <td>TOTAL PROYECTO (Fase 1 + Fase 2)</td>
+                            <td class="price-col">S/ 7,300.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Notas -->
+                <div class="q-notes">
+                    <h3>CONDICIONES COMERCIALES</h3>
+                    <ul>
+                        <li><strong>Forma de Pago Fase 1:</strong> 50% Adelanto, 50% Contra Entrega.</li>
+                        <li><strong>Tiempo de Desarrollo:</strong> 8-10 semanas aprox. para Fase 1.</li>
+                        <li><strong>Validez de Oferta:</strong> 15 días calendario.</li>
+                        <li><strong>No incluye:</strong> Costos de Hosting/Dominio (aprox. $100/año) ni API de WhatsApp
+                            de
+                            pago (se usa versión gratuita o Twilio aparte).</li>
+                    </ul>
+                </div>
+
+                <!-- Footer -->
+                <div class="q-footer">
+                    QP Secure Solutions - RUC 20601234567 - Lima, Perú
+                </div>
+
+                <div class="q-contact-info">
+                    <div class="q-contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        <span>+51 987 654 321</span>
+                    </div>
+                    <div class="q-contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>contacto@qpsecure.com</span>
+                    </div>
                 </div>
             </div>
-            <p style="margin-top: 20px; font-size: 11px;">
-                Esta cotización es emitida por QP Secure Solutions S.A.C. y no constituye un comprobante de pago válido
-                para efectos tributarios.
-            </p>
         </div>
-    </div>
+    </main>
 
-    <script>
-        // Si quieres mantener la fecha fija de la cotización, comenta este bloque.
-        // De lo contrario, actualizará la fecha al día actual.
-        // const dateElement = document.querySelector('.doc-date');
-        // const today = new Date();
-        // const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        // dateElement.textContent = `Fecha: ${today.toLocaleDateString('es-ES', options)}`;
-    </script>
+    <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/router.js"></script>
 </body>
 
 </html>
