@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap de Desarrollo | Plataforma Educativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/propuesta.css">
+    <link rel="icon" href="../../icons/iconoQP.png" type="image/png">
+    <style>
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e2e8f0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid #2563eb;
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .phase-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .badge-planning {
+            background: #64748b;
+        }
+
+        .badge-core {
+            background: #2563eb;
+        }
+
+        .badge-academic {
+            background: #7c3aed;
+        }
+
+        .badge-deploy {
+            background: #059669;
+        }
+
+        .timeline-title {
+            margin-top: 0;
+            color: #1e293b;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .timeline-tasks {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .timeline-tasks li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .timeline-tasks li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .timeline-tasks li.pending::before {
+            content: "○";
+            color: #94a3b8;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+
+            .left::after,
+            .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main id="app-content">
+        <section class="propuesta-hero" style="min-height: 40vh;">
+            <div class="container">
+                <div class="hero-badge">Planificación Estratégica</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Roadmap de Ejecución</span>
+                </h1>
+                <p class="hero-lead">Cronograma detallado para asegurar el éxito del despliegue en 10 semanas.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+
+                <div class="timeline-container">
+
+                    <!-- Fase 0 -->
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <span class="phase-badge badge-planning">Fase 0: Inception</span>
+                            <h2 class="timeline-title">Definición & Diseño</h2>
+                            <span class="timeline-date">Semanas 1-2</span>
+                            <ul class="timeline-tasks">
+                                <li>Reunión de Kickoff con directivos.</li>
+                                <li>Levantamiento de requerimientos detallados (SRS).</li>
+                                <li>Diseño de Mockups y Prototipos UI/UX.</li>
+                                <li>Aprobación de diagramas de Base de Datos.</li>
+                                <li>Configuración de entorno (Servidor, Repo, CI/CD).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Fase 1 -->
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <span class="phase-badge badge-core">Fase 1: Core System</span>
+                            <h2 class="timeline-title">Desarrollo del Núcleo</h2>
+                            <span class="timeline-date">Semanas 3-5</span>
+                            <ul class="timeline-tasks">
+                                <li>Implementación de Autenticación y RBAC (Roles).</li>
+                                <li>Desarrollo de Módulo de Sedes (Multi-Tenant).</li>
+                                <li>Portal Público Institucional (CMS Básico).</li>
+                                <li>Sistema de Noticias y Comunicados.</li>
+                                <li>Integración inicial de Base de Datos.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2 -->
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <span class="phase-badge badge-academic">Fase 2: Académico & Pagos</span>
+                            <h2 class="timeline-title">Lógica de Negocio</h2>
+                            <span class="timeline-date">Semanas 6-8</span>
+                            <ul class="timeline-tasks">
+                                <li class="pending">Módulo de Olimpiadas (Exámenes y Preguntas).</li>
+                                <li class="pending">Flujo de Inscripción y Pagos Yape.</li>
+                                <li class="pending">Validación de Vouchers y Caja.</li>
+                                <li class="pending">Integración WhatsApp API para alertas.</li>
+                                <li class="pending">Registro de Notas y Bimestres.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3 -->
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <span class="phase-badge badge-deploy">Fase 3: QA & Go-Live</span>
+                            <h2 class="timeline-title">Pruebas y Lanzamiento</h2>
+                            <span class="timeline-date">Semanas 9-10</span>
+                            <ul class="timeline-tasks">
+                                <li class="pending">Pruebas de Carga y Estrés.</li>
+                                <li class="pending">Capacitación a Personal Administrativo.</li>
+                                <li class="pending">Migración de Datos Históricos (si aplica).</li>
+                                <li class="pending">Manuales de Usuario y Documentación.</li>
+                                <li class="pending"><strong>Pase a Producción.</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </main>
+
+    <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/loader.js"></script>
+    <script src="../../scripts/router.js"></script>
+</body>
+
+</html>
