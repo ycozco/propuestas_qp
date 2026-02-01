@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías | Plataforma Educativa Multi-Sede</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/propuesta.css">
+    <link rel="icon" href="../../icons/iconoQP.png" type="image/png">
+    <style>
+        .tech-detail-section {
+            padding: 40px 0;
+        }
+
+        .tech-category-title {
+            font-size: 28px;
+            color: #2563eb;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .tech-detail-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .tech-detail-card h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-detail-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-detail-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: #475569;
+        }
+
+        .tech-detail-list li::before {
+            content: "•";
+            color: #2563eb;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .architecture-diagram {
+            background: #1e293b;
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .arch-layer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main id="app-content">
+        <section class="propuesta-hero" style="min-height: 40vh;">
+            <div class="container">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Arquitectura Tecnológica</span>
+                </h1>
+                <p class="hero-lead">Detalle profundo del stack técnico y decisiones de diseño.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+
+                <!-- Architecture Diagram Logic -->
+                <div class="architecture-diagram" data-aos="fade-up">
+                    <h2>Esquema de Arquitectura Modular</h2>
+                    <div class="arch-layer">Frontend Public & CMS (HTML/CSS/JS)</div>
+                    <div style="font-size: 24px;">⬇️</div>
+                    <div class="arch-layer">Backend Core & Plugins (CakePHP 4.x)</div>
+                    <div style="font-size: 24px;">⬇️</div>
+                    <div class="arch-layer">Database Layer (MySQL & Multi-Tenant SiteID)</div>
+                </div>
+
+                <!-- Backend -->
+                <div class="tech-category-title">Backend & Lógica de Negocio</div>
+                <div class="tech-detail-card" data-aos="fade-right">
+                    <h3>CakePHP 4.x Framework</h3>
+                    <ul class="tech-detail-list">
+                        <li><strong>ORM Robusto:</strong> Manejo eficiente de relaciones complejas (Olimpiadas ->
+                            Exámenes -> Preguntas).</li>
+                        <li><strong>Middleware de Autenticación:</strong> Seguridad integrada para protección de rutas.
+                        </li>
+                        <li><strong>Inyección de Dependencias:</strong> Código limpio y testable.</li>
+                        <li><strong>Plugins:</strong> Arquitectura modular separando lógica de 'Olimpiadas' del
+                            'Núcleo'.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category-title">Base de Datos & Infraestructura</div>
+                <div class="tech-detail-card" data-aos="fade-right" data-aos-delay="100">
+                    <h3>MySQL / MariaDB</h3>
+                    <ul class="tech-detail-list">
+                        <li><strong>Multi-Tenancy:</strong> Columna <code>site_id</code> en todas las tablas clave para
+                            separación lógica de sedes.</li>
+                        <li><strong>Integridad Referencial:</strong> Foreign Keys estrictas para evitar datos huérfanos.
+                        </li>
+                        <li><strong>Índices Optimizados:</strong> Búsquedas rápidas por DNI y Código de Estudiante.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category-title">APIs & Integraciones Externas</div>
+                <div class="tech-detail-card" data-aos="fade-right" data-aos-delay="200">
+                    <h3>WhatsApp Business API</h3>
+                    <ul class="tech-detail-list">
+                        <li>Envío de mensajes plantilla pre-aprobados por Meta.</li>
+                        <li>Confirmación instantánea de pagos e inscripciones.</li>
+                        <li>Notificación de resultados de exámenes.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </main>
+
+    <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/loader.js"></script>
+    <script src="../../scripts/router.js"></script>
+</body>
+
+</html>

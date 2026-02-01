@@ -5,6 +5,14 @@
 
 console.log('Router Router Initialized');
 
+// Listen for partials loading
+window.addEventListener('componentsLoaded', () => {
+    // Determine current filename
+    let path = window.location.pathname.split('/').pop();
+    if (!path) path = 'index.html'; // Root is index
+    updateActiveLink(path);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Intercept all clicks on .nav-link
     document.body.addEventListener('click', async (e) => {
