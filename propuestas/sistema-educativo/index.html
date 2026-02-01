@@ -439,79 +439,96 @@
             </div>
         </section>
 
-        <!-- Tech Stack Section -->
+        <!-- Arquitectura Section (Segmented) -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Stack Tecnológico</h2>
-                    <p class="section-description">Tecnologías modernas y probadas en producción</p>
+                    <h2 class="section-title">Arquitectura del Sistema</h2>
+                    <p class="section-description">Desglose técnico por capas funcionales</p>
                 </div>
 
-                <div class="tech-grid">
-                    <div class="tech-card" data-aos="zoom-in">
-                        <div class="tech-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                            </svg>
+                <div class="architecture-segments">
+
+                    <!-- Backend & DB -->
+                    <div class="segment-group">
+                        <h3 class="segment-title">Backend & Datos</h3>
+                        <div class="tech-grid">
+                            <div class="tech-card" data-aos="fade-up">
+                                <div class="tech-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                    </svg>
+                                </div>
+                                <h3>CakePHP 4.x</h3>
+                                <p>Lógica de negocio robusta, ORM seguro y patrón MVC.</p>
+                            </div>
+                            <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="tech-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <h3>MySQL/MariaDB</h3>
+                                <p>Persistencia relacional optimizada para consultas complejas.</p>
+                            </div>
                         </div>
-                        <h3>CakePHP 4.x</h3>
-                        <p>Framework PHP robusto con ORM, autenticación y autorización integrada</p>
                     </div>
 
-                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="tech-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                            </svg>
+                    <!-- Sistema Web -->
+                    <div class="segment-group">
+                        <h3 class="segment-title">Sistema Web (Frontend)</h3>
+                        <div class="tech-grid">
+                            <div class="tech-card" data-aos="fade-up">
+                                <div class="tech-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM6.5 13C4.02 13 2 15.02 2 17.5S4.02 22 6.5 22 11 19.98 11 17.5 8.98 13 6.5 13zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                    </svg>
+                                </div>
+                                <h3>HTML5 / CSS3 / JS</h3>
+                                <p>Interfaz responsiva, limpia y rápida sin frameworks pesados.</p>
+                            </div>
+                            <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="tech-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    </svg>
+                                </div>
+                                <h3>Portal Público CMS</h3>
+                                <p>Gestión de contenido visible para visitantes e interesados.</p>
+                            </div>
                         </div>
-                        <h3>MySQL/MariaDB</h3>
-                        <p>Base de datos relacional con soporte completo para transacciones</p>
                     </div>
 
-                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="tech-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                            </svg>
+                    <!-- APIs & Integrations -->
+                    <div class="segment-group">
+                        <h3 class="segment-title">APIs & Integraciones</h3>
+                        <div class="tech-grid">
+                            <div class="tech-card" data-aos="fade-up">
+                                <div class="tech-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                    </svg>
+                                </div>
+                                <h3>WhatsApp API</h3>
+                                <p>Notificaciones automáticas de inscripción y pagos.</p>
+                            </div>
+                            <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="tech-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                                    </svg>
+                                </div>
+                                <h3>Reportes PDF/Excel</h3>
+                                <p>Librerías mPDF y PHPSpreadsheet para documentos oficiales.</p>
+                            </div>
                         </div>
-                        <h3>WhatsApp Business API</h3>
-                        <p>Integración con Meta o Twilio para confirmaciones automáticas</p>
                     </div>
 
-                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="tech-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                            </svg>
-                        </div>
-                        <h3>mPDF / PHPSpreadsheet</h3>
-                        <p>Generación de reportes en PDF y exportación a Excel</p>
-                    </div>
-
-                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="tech-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                            </svg>
-                        </div>
-                        <h3>RBAC + Auditoría</h3>
-                        <p>Control de acceso basado en roles con trazabilidad completa</p>
-                    </div>
-
-                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="tech-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
-                            </svg>
-                        </div>
-                        <h3>Multi-Tenant por site_id</h3>
-                        <p>Arquitectura multi-sede con filtrado automático por sede</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -572,6 +589,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Lista para Cotización -->
         <section class="section">
             <div class="container">
@@ -716,16 +734,10 @@
             <div class="container">
                 <p>&copy; 2026 QP Secure Solutions. Todos los derechos reservados.</p>
             </div>
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="container">
-                    <p>&copy; 2026 QP Secure Solutions. Todos los derechos reservados.</p>
-                </div>
-            </footer>
-    </main>
+        </footer>
 
-    <script src="../../scripts/main.js"></script>
-    <script src="../../scripts/router.js"></script>
+        <script src="../../scripts/main.js"></script>
+        <script src="../../scripts/router.js"></script>
 </body>
 
 </html>
