@@ -125,13 +125,13 @@
 .vision-icon {
     width: 64px;
     height: 64px;
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(30, 64, 175, 0.12);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--spacing-md);
-    transition: var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .vision-icon svg {
@@ -141,8 +141,8 @@
 }
 
 .vision-card:hover .vision-icon {
-    background: rgba(139, 92, 246, 0.2);
-    transform: scale(1.1);
+    background: rgba(30, 64, 175, 0.2);
+    transform: scale(1.1) rotate(5deg);
 }
 
 .vision-card h3 {
@@ -202,27 +202,27 @@
 }
 
 .role-icon.superadmin {
-    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    background: linear-gradient(135deg, #1e40af, #1e3a8a);
 }
 
 .role-icon.admin {
-    background: linear-gradient(135deg, #ec4899, #db2777);
+    background: linear-gradient(135deg, #0f766e, #0d9488);
 }
 
 .role-icon.docente {
-    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    background: linear-gradient(135deg, #0891b2, #0e7490);
 }
 
 .role-icon.coord {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, #059669, #047857);
 }
 
 .role-icon.caja {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: linear-gradient(135deg, #d97706, #b45309);
 }
 
 .role-icon.estudiante {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .role-icon.invitado {
@@ -240,7 +240,7 @@
 .role-badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: rgba(139, 92, 246, 0.15);
+    background: rgba(30, 64, 175, 0.15);
     color: var(--color-primary-light);
     border-radius: 12px;
     font-size: 0.75rem;
@@ -315,12 +315,12 @@
 
 .tech-tag {
     padding: 0.4rem 0.8rem;
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(30, 64, 175, 0.12);
     color: var(--color-primary-light);
     border-radius: 8px;
     font-size: 0.875rem;
     font-weight: 500;
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(30, 64, 175, 0.25);
 }
 
 /* Payment Flow */
@@ -451,13 +451,13 @@
 .tech-icon {
     width: 80px;
     height: 80px;
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(30, 64, 175, 0.12);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto var(--spacing-md);
-    transition: var(--transition-base);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tech-icon svg {
@@ -467,8 +467,8 @@
 }
 
 .tech-card:hover .tech-icon {
-    background: rgba(139, 92, 246, 0.2);
-    transform: rotate(360deg);
+    background: rgba(30, 64, 175, 0.2);
+    transform: rotate(360deg) scale(1.1);
 }
 
 .tech-card h3 {
