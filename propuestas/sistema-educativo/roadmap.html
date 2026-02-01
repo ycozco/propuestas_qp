@@ -98,6 +98,13 @@
             position: relative;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .phase-badge {
@@ -131,32 +138,173 @@
             margin-top: 0;
             color: #1e293b;
             font-size: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .timeline-date {
             color: #64748b;
             font-size: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: block;
             font-weight: 600;
         }
 
-        .timeline-tasks {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .timeline-tasks li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-            color: #475569;
+        .timeline-summary {
             font-size: 14px;
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
-        .timeline-tasks li::before {
+        .btn-details {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #f1f5f9;
+            color: #2563eb;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-details:hover {
+            background-color: #e2e8f0;
+            color: #1d4ed8;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title-group h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #1e293b;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .close-modal {
+            font-size: 28px;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #ef4444;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-section h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 5px;
+        }
+
+        .idea-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #334155;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        @media (min-width: 600px) {
+            .detail-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .detail-list li {
+            font-size: 14px;
+            color: #475569;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .detail-list li::before {
             content: "✓";
             position: absolute;
             left: 0;
@@ -164,9 +312,19 @@
             font-weight: bold;
         }
 
-        .timeline-tasks li.pending::before {
-            content: "○";
-            color: #94a3b8;
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: #e0f2fe;
+            color: #0284c7;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         @media screen and (max-width: 768px) {
@@ -223,157 +381,49 @@
 
                     <!-- Fase 0 -->
                     <div class="timeline-item left" data-aos="fade-right">
-                        <div class="timeline-content">
+                        <div class="timeline-content" onclick="openModal('phase-0')">
                             <span class="phase-badge badge-planning">Fase 0: Inception</span>
                             <h2 class="timeline-title">Definición & Diseño</h2>
                             <span class="timeline-date">Semanas 1-2</span>
-
-                            <div class="roadmap-detail">
-                                <p><strong>Idea:</strong> Establecer los cimientos sólidos del proyecto, definiendo la
-                                    arquitectura tecnológica y visual antes de escribir código complejo.</p>
-
-                                <div class="detail-block">
-                                    <h4>🎯 Alcance</h4>
-                                    <p>Documentación técnica (SRS), Prototipos UI/UX de alta fidelidad y Configuración
-                                        de entornos Dev/Prod.</p>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>⚙️ Requerimientos Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li>Prototipo navegable de Portal Público y Panel Admin.</li>
-                                        <li>Definición de Diccionario de Datos (DER).</li>
-                                        <li>Configuración de Repositorio y CI/CD Pipeline.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>🛡️ Requerimientos No Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li>Estándares de Código (PSR-12 para PHP).</li>
-                                        <li>Diseño Responsivo (Mobile First).</li>
-                                        <li>Plan de Seguridad de Datos.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p class="timeline-summary">Establecimiento de cimientos, diseño UI/UX y configuración
+                                inicial del entorno.</p>
+                            <button class="btn-details">Ver Detalles 🔍</button>
                         </div>
                     </div>
 
                     <!-- Fase 1 -->
                     <div class="timeline-item right" data-aos="fade-left">
-                        <div class="timeline-content">
+                        <div class="timeline-content" onclick="openModal('phase-1')">
                             <span class="phase-badge badge-core">Fase 1: Core System</span>
                             <h2 class="timeline-title">Núcleo Administrativo</h2>
                             <span class="timeline-date">Semanas 3-5</span>
-
-                            <div class="roadmap-detail">
-                                <p><strong>Idea:</strong> Implementar la estructura base que gestionará la seguridad,
-                                    usuarios y la separación lógica de sedes.</p>
-
-                                <div class="detail-block">
-                                    <h4>🎯 Alcance</h4>
-                                    <p>Sistema de gestión de usuarios, roles, sedes y portal web público (CMS).</p>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>⚙️ Requerimientos Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li><strong>Auth:</strong> Login, Logout, Recuperar Contraseña.</li>
-                                        <li><strong>RBAC:</strong> Gestión de Roles (SuperAdmin, AdminSede, Docente).
-                                        </li>
-                                        <li><strong>Multi-Sede:</strong> CRUD de Sedes y filtrado lógico.</li>
-                                        <li><strong>Portal:</strong> Gestión de Noticias, Banners y Páginas.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>🛡️ Requerimientos No Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li>Aislamiento de datos por `site_id` obligatorio.</li>
-                                        <li>Contraseñas hasheadas (Bcrypt/Argon2).</li>
-                                        <li>Auditoría de accesos (Login Logs).</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p class="timeline-summary">Implementación de seguridad, gestión de usuarios, roles y
+                                estructura multi-sede.</p>
+                            <button class="btn-details">Ver Detalles 🔍</button>
                         </div>
                     </div>
 
                     <!-- Fase 2 -->
                     <div class="timeline-item left" data-aos="fade-right">
-                        <div class="timeline-content">
-                            <span class="phase-badge badge-academic">Fase 2: Lógica de Negocio</span>
-                            <h2 class="timeline-title">Académico & Financiero</h2>
+                        <div class="timeline-content" onclick="openModal('phase-2')">
+                            <span class="phase-badge badge-academic">Fase 2: Académico</span>
+                            <h2 class="timeline-title">Lógica de Negocio</h2>
                             <span class="timeline-date">Semanas 6-8</span>
-
-                            <div class="roadmap-detail">
-                                <p><strong>Idea:</strong> El corazón operativo que maneja las inscripciones, pagos y
-                                    evaluaciones académicas.</p>
-
-                                <div class="detail-block">
-                                    <h4>🎯 Alcance</h4>
-                                    <p>Módulo de Olimpiadas completo, Flujo de inscripción con Yape y Registro de Notas.
-                                    </p>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>⚙️ Requerimientos Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li><strong>Olimpiadas:</strong> Crear Examen, Importar Preguntas, Definir
-                                            Temarios.</li>
-                                        <li><strong>Pagos:</strong> Subir Voucher, Validar Pago, Notificar por WhatsApp.
-                                        </li>
-                                        <li><strong>Académico:</strong> Matrícula de Alumnos, Registro de Notas por
-                                            Docente.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>🛡️ Requerimientos No Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li>Consistencia Transaccional (ACID) en pagos.</li>
-                                        <li>Tiempos de respuesta para validación < 1s.</li>
-                                        <li>Escalabilidad para concurrencia en exámenes.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p class="timeline-summary">Desarrollo de módulos clave: Olimpiadas, Pagos en línea (Yape) y
+                                Registro de Notas.</p>
+                            <button class="btn-details">Ver Detalles 🔍</button>
                         </div>
                     </div>
 
                     <!-- Fase 3 -->
                     <div class="timeline-item right" data-aos="fade-left">
-                        <div class="timeline-content">
-                            <span class="phase-badge badge-deploy">Fase 3: QA & Lanzamiento</span>
-                            <h2 class="timeline-title">Estabilización</h2>
+                        <div class="timeline-content" onclick="openModal('phase-3')">
+                            <span class="phase-badge badge-deploy">Fase 3: Lanzamiento</span>
+                            <h2 class="timeline-title">QA & Go-Live</h2>
                             <span class="timeline-date">Semanas 9-10</span>
-
-                            <div class="roadmap-detail">
-                                <p><strong>Idea:</strong> Asegurar la calidad del software y preparar el entorno para
-                                    operación real masiva.</p>
-
-                                <div class="detail-block">
-                                    <h4>🎯 Alcance</h4>
-                                    <p>Pruebas intensivas, reportes finales, capacitación y despliegue a producción.</p>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>⚙️ Requerimientos Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li><strong>Reportes:</strong> Generación de PDFs (Certificados, Boletas) y
-                                            Excel Masivo.</li>
-                                        <li><strong>Ranking:</strong> Cálculo automático de puestos.</li>
-                                        <li><strong>Dashboards:</strong> Métricas finales para directivos.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="detail-block">
-                                    <h4>🛡️ Requerimientos No Funcionales</h4>
-                                    <ul class="detail-list">
-                                        <li>Carga de página pública < 2 segundos (LCP).</li>
-                                        <li>Copias de Seguridad Automáticas (Diarias).</li>
-                                        <li>Certificado SSL/TLS Implementado.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p class="timeline-summary">Pruebas intensivas, reportes finales, capacitación y despliegue
+                                a producción.</p>
+                            <button class="btn-details">Ver Detalles 🔍</button>
                         </div>
                     </div>
 
@@ -382,6 +432,272 @@
             </div>
         </section>
 
+        <!-- Modals -->
+
+        <!-- Modal Phase 0 -->
+        <div id="phase-0" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <div class="modal-title-group">
+                        <h3>Definición & Diseño</h3>
+                        <div class="modal-subtitle">Fase 0: Semanas 1-2</div>
+                    </div>
+                    <span class="close-modal" onclick="closeModal('phase-0')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="detail-section">
+                        <h4>💡 Idea Central</h4>
+                        <div class="idea-text">Establecer los cimientos sólidos del proyecto, definiendo la arquitectura
+                            tecnológica y visual antes de escribir código complejo.</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🎯 Alcance</h4>
+                        <ul class="detail-list">
+                            <li>Levantamiento de requerimientos (SRS).</li>
+                            <li>Diseño de Mockups y Prototipos.</li>
+                            <li>Diagrama de Entidad-Relación (DER).</li>
+                            <li>Configuración de Repositorio.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>⚙️ Requerimientos Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Prototipo navegable de Portal y Admin.</li>
+                            <li>Definición de Diccionario de Datos.</li>
+                            <li>Configuración de CI/CD Pipeline.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🛡️ No Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Estándares de Código (PSR-12).</li>
+                            <li>Diseño Responsivo (Mobile First).</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📦 Entregables</h4>
+                        <ul class="detail-list">
+                            <li>Documento SRS (PDF).</li>
+                            <li>Enlace a Figma (Prototipos).</li>
+                            <li>Repositorio GitHub Inicializado.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>💻 Tecnologías Clave</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">Markdown</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">VS Code</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Phase 1 -->
+        <div id="phase-1" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <div class="modal-title-group">
+                        <h3>Núcleo Administrativo</h3>
+                        <div class="modal-subtitle">Fase 1: Semanas 3-5</div>
+                    </div>
+                    <span class="close-modal" onclick="closeModal('phase-1')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="detail-section">
+                        <h4>💡 Idea Central</h4>
+                        <div class="idea-text">Implementar la estructura base que gestionará la seguridad, usuarios y la
+                            separación lógica de sedes.</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🎯 Alcance</h4>
+                        <ul class="detail-list">
+                            <li>Sistema de Autenticación.</li>
+                            <li>Gestión de Roles (RBAC).</li>
+                            <li>CRUD de Sedes (Multi-tenant).</li>
+                            <li>Portal Público (CMS Básico).</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>⚙️ Requerimientos Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Login, Logout, Reset Password.</li>
+                            <li>Gestión de Noticias y Banners.</li>
+                            <li>Gestión de Usuarios Admin.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🛡️ No Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Aislamiento de datos por SiteID.</li>
+                            <li>Hash de Contraseñas (Bcrypt).</li>
+                            <li>Logs de Auditoría de Acceso.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📦 Entregables</h4>
+                        <ul class="detail-list">
+                            <li>URL de Staging Funcional.</li>
+                            <li>Credenciales de Admin.</li>
+                            <li>Diccionario de Datos Final.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>💻 Tecnologías Clave</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">CakePHP 4</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Bootstrap 5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Phase 2 -->
+        <div id="phase-2" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <div class="modal-title-group">
+                        <h3>Académico & Financiero</h3>
+                        <div class="modal-subtitle">Fase 2: Semanas 6-8</div>
+                    </div>
+                    <span class="close-modal" onclick="closeModal('phase-2')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="detail-section">
+                        <h4>💡 Idea Central</h4>
+                        <div class="idea-text">El corazón operativo que maneja las inscripciones, pagos y evaluaciones
+                            académicas.</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🎯 Alcance</h4>
+                        <ul class="detail-list">
+                            <li>Módulo de Olimpiadas.</li>
+                            <li>Pasarela de Pagos (Yape/Voucher).</li>
+                            <li>Registro de Notas Docente.</li>
+                            <li>Notificaciones WhatsApp.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>⚙️ Requerimientos Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Crear Examenes y Preguntas.</li>
+                            <li>Validar Vouchers de Pago.</li>
+                            <li>Matrícula de Alumnos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🛡️ No Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Transacciones ACID.</li>
+                            <li>Validación < 1s.</li>
+                            <li>Escalabilidad Concurrente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📦 Entregables</h4>
+                        <ul class="detail-list">
+                            <li>Módulos Funcionales.</li>
+                            <li>Reporte de Pruebas Unitarias.</li>
+                            <li>Video Demo de Pagos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>💻 Tecnologías Clave</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">WhatsApp API</span>
+                            <span class="tech-tag">JS Fetch</span>
+                            <span class="tech-tag">JSON API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Phase 3 -->
+        <div id="phase-3" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <div class="modal-title-group">
+                        <h3>QA & Lanzamiento</h3>
+                        <div class="modal-subtitle">Fase 3: Semanas 9-10</div>
+                    </div>
+                    <span class="close-modal" onclick="closeModal('phase-3')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="detail-section">
+                        <h4>💡 Idea Central</h4>
+                        <div class="idea-text">Asegurar la calidad del software y preparar el entorno para operación
+                            real masiva.</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🎯 Alcance</h4>
+                        <ul class="detail-list">
+                            <li>QA Avanzado y Stress Test.</li>
+                            <li>Reportes Académicos.</li>
+                            <li>Capacitación y Docs.</li>
+                            <li>Despliegue a Producción.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>⚙️ Requerimientos Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Generación PDF (Certificados).</li>
+                            <li>Ranking Automático.</li>
+                            <li>Dashboard Directivo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>🛡️ No Funcionales</h4>
+                        <ul class="detail-list">
+                            <li>Carga < 2s (LCP).</li>
+                            <li>Backups Diarios.</li>
+                            <li>Certificado SSL.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📦 Entregables</h4>
+                        <ul class="detail-list">
+                            <li>Código Fuente Final.</li>
+                            <li>Manuales Usuario/Técnico.</li>
+                            <li>Certificado de Calidad.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>💻 Tecnologías Clave</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Ubuntu Server</span>
+                            <span class="tech-tag">LetsEncrypt</span>
+                            <span class="tech-tag">TCPDF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer Placeholder -->
         <div id="footer-placeholder"></div>
     </main>
@@ -389,6 +705,22 @@
     <script src="../../scripts/main.js"></script>
     <script src="../../scripts/loader.js"></script>
     <script src="../../scripts/router.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
 </body>
 
 </html>
